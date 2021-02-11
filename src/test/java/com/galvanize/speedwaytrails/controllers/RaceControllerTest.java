@@ -22,7 +22,7 @@ public class RaceControllerTest {
 
         mockMvc.perform(get("/api/v1/racecars"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()").value(2));
+                .andExpect(jsonPath("$.length()").value(1));
 
     }
 
