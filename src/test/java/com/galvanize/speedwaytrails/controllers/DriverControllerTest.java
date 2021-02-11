@@ -23,6 +23,6 @@ public class DriverControllerTest {
     public void getAllDrivers() throws Exception {
         mockMvc.perform(get("/api/v1/drivers"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()").value(1));
+                .andExpect(jsonPath("$.length()").value(2));
     }
 }

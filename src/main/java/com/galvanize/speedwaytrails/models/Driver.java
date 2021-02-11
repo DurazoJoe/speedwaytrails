@@ -24,9 +24,9 @@ public class Driver {
     public int age;
     public String nickname;
 
-    //@OneToMany(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "owner")
-    //public List<RaceCar> raceCarList;
+    @OneToMany(targetEntity=RaceCar.class,cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, orphanRemoval = true)
+    public List<RaceCar> raceCarList;
 
     public int wins;
     public int losses;
