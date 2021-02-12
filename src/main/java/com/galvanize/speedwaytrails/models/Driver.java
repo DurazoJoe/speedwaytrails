@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -17,6 +18,8 @@ import java.util.List;
 public class Driver {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="driver_id")
     public long id;
 
     public String firstName;
@@ -24,9 +27,9 @@ public class Driver {
     public int age;
     public String nickname;
 
-    @OneToMany(targetEntity=RaceCar.class,cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, orphanRemoval = true)
-    public List<RaceCar> raceCarList;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "owner", referencedColumnName = "driver_id")
+    public Set<RaceCar> raceCarList;
 
     public int wins;
     public int losses;
